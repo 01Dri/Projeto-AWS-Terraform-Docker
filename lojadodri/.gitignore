@@ -36,4 +36,3 @@ build/
 terraform
 .git
 diagram
-.env
