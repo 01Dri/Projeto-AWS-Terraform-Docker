@@ -5,7 +5,7 @@ services:
     networks:
       - mysql-db-network
     environment:
-      - MYSQL_ROOT_PASSWORD=codigo123
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
       - MYSQL_DATABASE=lojadodri
   web-service:
     build:
