@@ -1,28 +1,29 @@
 package me.dri.lojadodri.controllers;
 
+import me.dri.lojadodri.models.Cliente;
+import me.dri.lojadodri.models.dto.CadastroContaUsuarioDTO;
 import me.dri.lojadodri.models.dto.ClienteDTO;
-import me.dri.lojadodri.models.dto.ClienteLoginDTO;
+import me.dri.lojadodri.repositories.ClienteRepository;
 import me.dri.lojadodri.services.CadastrarServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
-
 @RestController
-@RequestMapping("/auth")
+@RequestMapping(value = "/auth")
 public class CadastrarController {
 
 
     @Autowired
     private CadastrarServices services;
 
-    @PostMapping("/cadastrar")
-    public ResponseEntity<ClienteDTO> cadastrar(@RequestBody ClienteDTO cliente, @RequestBody ClienteLoginDTO clienteLoginDTO) {
-        var result = new ClienteDTO(null, cliente.cpf(), cliente.nome(),cliente.sobrenome(), cliente.endereco(), cliente.data_nascimento());
-        var resultLogin = new ClienteLoginDTO(clienteLoginDTO.username(), clienteLoginDTO.password());
-        return ResponseEntity.ok().body(services.cadastrar(result, resultLogin));
+    @Autowired
+    private ClienteRepository repository;
 
-
+    @PostMapping(value = "/cadastrar/conta/v1")
+    public ResponseEntity<CadastroContaUsuarioDTO> cadastrarUsuario(@RequestBody ClienteDTO clienteDTO) {
+        var result = services.cadastrarConta(clienteDTO);
+        return ResponseEntity.ok().body(result);
     }
+
 }

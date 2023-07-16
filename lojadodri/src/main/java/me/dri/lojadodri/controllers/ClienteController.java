@@ -1,6 +1,7 @@
 package me.dri.lojadodri.controllers;
 
 import me.dri.lojadodri.models.Cliente;
+import me.dri.lojadodri.models.dto.ClienteDTO;
 import me.dri.lojadodri.services.ClienteServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,12 +20,8 @@ public class ClienteController {
     private ClienteServices services;
 
     @GetMapping
-    public ResponseEntity<List<Cliente>> findAll() {
+    public ResponseEntity<List<ClienteDTO>> findAll() {
         return ResponseEntity.ok().body(services.findAll());
     }
 
-    @GetMapping(value = "/{id}")
-    public ResponseEntity<Cliente> findById(@PathVariable Long id) {
-        return ResponseEntity.ok().body(services.findById(id));
-    }
 }

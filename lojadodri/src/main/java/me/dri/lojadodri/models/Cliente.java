@@ -20,7 +20,7 @@ public class Cliente {
     private Date data_nascimento;
 
     @OneToOne(cascade = {CascadeType.DETACH})
-    @JoinColumn(name = "cliente_login")
+    @JoinColumn(name = "cliente_login_id")
     private ClienteLogin clienteLogin;
 
     public Cliente() {
