@@ -19,9 +19,15 @@ public class ClienteController {
     @Autowired
     private ClienteServices services;
 
-    @GetMapping
+    @GetMapping (value = "/clientesAll")
     public ResponseEntity<List<ClienteDTO>> findAll() {
-        return ResponseEntity.ok().body(services.findAll());
+        var result = services.findAll();
+        return ResponseEntity.ok().body(result);
+    }
+
+    @GetMapping (value = "find/{id}")
+    public ResponseEntity<ClienteDTO> findById(@PathVariable Long id) {
+        return ResponseEntity.ok().body(services.findById(id));
     }
 
 }
