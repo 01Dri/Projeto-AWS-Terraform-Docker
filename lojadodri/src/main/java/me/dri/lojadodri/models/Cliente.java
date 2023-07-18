@@ -2,13 +2,14 @@ package me.dri.lojadodri.models;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
 
 @Entity
-@Table(name = "clientes")
-public class Cliente {
+@Table(name = "cliente")
+public class Cliente implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -104,4 +105,6 @@ public class Cliente {
     public int hashCode() {
         return Objects.hash(id);
     }
+
+
 }

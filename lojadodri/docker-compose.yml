@@ -1,5 +1,6 @@
 version: '3'
 services:
+
   mysql-service:
     image: mysql
     networks:
@@ -24,6 +25,21 @@ services:
           memory: 700M
         reservations:
           memory: 700M
+
+  flyway:
+    image: flyway/flyway:latest
+    volumes:
+      - ./sql:/flyway/sql
+    environment:
+      - FLYWAY_URL=jdbc:mysql://mysql-service:3306/lojadodri
+      - FLYWAY_USER=root
+      - FLYWAY_PASSWORD=codigo123
+      - FLYWAY_BASELINE_ON_MIGRATE=true
+    depends_on:
+      - mysql-service
+    command: repair
+
+
 networks:
   mysql-db-network:
     driver: bridge

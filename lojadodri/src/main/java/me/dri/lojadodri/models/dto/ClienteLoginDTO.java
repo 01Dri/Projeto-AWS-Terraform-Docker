@@ -2,7 +2,7 @@ package me.dri.lojadodri.models.dto;
 
 
 
-public record ClienteLoginDTO (Long id,  String username, String password) {
+public record ClienteLoginDTO (String username, String password) {
 
 
 }

@@ -29,7 +29,6 @@ public class CadastrarServices {
 
 
     public CadastroContaUsuarioDTO salvarEntidadesConvertidasDb(ClienteDTO clienteDTO) {
-
         var result = new CadastroContaUsuarioDTO(
                 clienteDTO.cpf(), clienteDTO.nome(), clienteDTO.sobrenome(), clienteDTO.endereco(), clienteDTO.data_nascimento(),
                 clienteDTO.username(), clienteDTO.password());

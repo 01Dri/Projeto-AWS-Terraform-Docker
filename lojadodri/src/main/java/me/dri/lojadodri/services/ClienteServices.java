@@ -6,7 +6,6 @@ import me.dri.lojadodri.models.Cliente;
 import me.dri.lojadodri.models.dto.ClienteDTO;
 import me.dri.lojadodri.repositories.ClienteRepository;
 import me.dri.lojadodri.utils.ConvertEntity;
-import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +17,7 @@ public class ClienteServices {
     @Autowired
     private ClienteRepository repository;
 
-    private DozerBeanMapper mapper = new DozerBeanMapper();
+
 
     public List<ClienteDTO> findAll() {
         List<Cliente> clientesFromDB = repository.findAll();
